@@ -3,29 +3,21 @@
 def count_words(file_name):
     """Counts how many times each space-separated word appears in text file """
 
-    word_count = {}
+    word_counts = {}
     data_file = open(file_name)
-
-    word_frequency = 0
 
     for line in data_file:
         line.rstrip()
         word_list = line.split(' ')
         for word in word_list:
-            if word not in word_count:
-                # python is viewing this as list indexing vs dictionary setting
-                word_count[word] = word_frequency
-                word_frequency += 1
-            else:
-                word_frequency += 1
+            # get method returns a default value associated with key 
+            # by setting it to 0 
+            # add one each time word appears through loop
+            word_counts[word] = word_counts.get(word, 0) + 1
 
-    print word_count
+    print word_counts
     return
 
 count_words("test.txt")
 
-# our function would find the value of word and frequency,
-# then create a dictionary by taking those arguments
-# def dictionary(key, value):
-#   dictionary = {key: value}
 
