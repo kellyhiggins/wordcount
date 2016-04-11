@@ -9,9 +9,11 @@ def count_words(file_name):
     word_frequency = 0
 
     for line in data_file:
+        line.rstrip()
         word_list = line.split(' ')
         for word in word_list:
             if word not in word_count:
+                # python is viewing this as list indexing vs dictionary setting
                 word_count[word] = word_frequency
                 word_frequency += 1
             else:
